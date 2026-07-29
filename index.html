@@ -72,21 +72,21 @@
       <p class="lede">プロンプトエンジニアリングとコンテキストエンジニアリングを包含する、上位概念。「何を言うか」ではなく「AIがどんな環境で、どこまで動けるか」を設計する領域として、2026年に公式化された。</p>
     </header>
     <div class="nest reveal">
-      <div class="band band--outer">
-        <div class="band__label"><b>ハーネスエンジニアリング</b><em>Harness Engineering</em></div>
-        <p class="band__note">AIの行動・権限・環境そのものを設計する。フック、ワークフロー、評価、隔離、配布までを含む。</p>
-        <div class="band">
-          <div class="band__label"><b>コンテキストエンジニアリング</b><em>Context Engineering</em></div>
-          <p class="band__note">必要な文脈だけを、必要なときに供給する。</p>
-          <div class="band">
-            <div class="band__label"><b>プロンプトエンジニアリング</b><em>Prompt Engineering</em></div>
-            <p class="band__note">依頼の書き方を磨く。</p>
-          </div>
-        </div>
-      </div>
       <div class="band band--loop">
         <div class="band__label"><b>ループエンジニアリング</b><em>Loop Engineering</em></div>
         <p class="band__note">2026年6月、Anthropic社Claude Code開発者Boris ChernyとPeter Steinbergerの投稿から広まり、Andrew Ngが「3つの入れ子フィードバックループ」として定式化した概念。</p>
+        <div class="band">
+          <div class="band__label"><b>ハーネスエンジニアリング</b><em>Harness Engineering</em></div>
+          <p class="band__note">AIの行動・権限・環境そのものを設計する。フック、ワークフロー、評価、隔離、配布までを含む。</p>
+          <div class="band">
+            <div class="band__label"><b>コンテキストエンジニアリング</b><em>Context Engineering</em></div>
+            <p class="band__note">必要な文脈だけを、必要なときに供給する。</p>
+            <div class="band">
+              <div class="band__label"><b>プロンプトエンジニアリング</b><em>Prompt Engineering</em></div>
+              <p class="band__note">依頼の書き方を磨く。</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -114,11 +114,13 @@
           <li>複数ワーカーが識別番号付きで同時修正、コンフリクトなし</li>
           <li>スタイル・型・importをフックが機械検査</li>
         </ul>
-        <div class="roles">
-          <div class="role role--lead"><b>監督</b><small>分析→プラン→分配→最終判定</small></div>
-          <div class="role"><b>主力ワーカー</b><small>シニア相当・実装本体</small></div>
-          <div class="role"><b>検証ワーカー</b><small>ミドル相当・検証+フォールバック</small></div>
-          <div class="role"><b>軽量ワーカー</b><small>ジュニア相当・UI/スタイル</small></div>
+        <div class="orgchart">
+          <div class="role role--lead orgchart__root"><b>監督</b><small>分析→プラン→分配→最終判定</small></div>
+          <div class="orgchart__children">
+            <div class="role orgchart__child"><b>主力ワーカー</b><small>シニア相当・実装本体</small></div>
+            <div class="role orgchart__child"><b>検証ワーカー</b><small>ミドル相当・検証+フォールバック</small></div>
+            <div class="role orgchart__child"><b>軽量ワーカー</b><small>ジュニア相当・UI/スタイル</small></div>
+          </div>
         </div>
       </div>
       <div class="flow__step">

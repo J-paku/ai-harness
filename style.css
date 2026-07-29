@@ -265,7 +265,7 @@ h3 { font-size: 1rem; font-weight: 700; }
 }
 
 /* ===== 概念: 入れ子バンド ===== */
-.nest { display: flex; flex-direction: column; gap: .8rem; }
+.nest { display: flex; flex-direction: column; gap: 0; }
 .band {
   border: 1px solid var(--rule);
   padding: clamp(.9rem, 2vh, 1.5rem);
@@ -274,11 +274,11 @@ h3 { font-size: 1rem; font-weight: 700; }
   flex-direction: column;
   gap: .8rem;
 }
-.band--outer { border-color: var(--signal); background: color-mix(in srgb, var(--signal) 20%, var(--surface)); }
-.band--outer > .band { border-color: var(--rule-strong); background: color-mix(in srgb, var(--signal) 8%, var(--surface)); }
-.band--outer > .band > .band { background: var(--surface); }
 .band--loop { border-style: dashed; border-color: var(--pass); background: color-mix(in srgb, var(--pass) 18%, var(--surface)); }
 .band--loop .band__label em { color: var(--pass); }
+.band--loop > .band { border-style: solid; border-color: var(--signal); background: color-mix(in srgb, var(--signal) 20%, var(--surface)); }
+.band--loop > .band > .band { border-color: var(--rule-strong); background: color-mix(in srgb, var(--signal) 8%, var(--surface)); }
+.band--loop > .band > .band > .band { background: var(--surface); }
 .band__label {
   display: flex;
   align-items: baseline;
@@ -322,7 +322,22 @@ h3 { font-size: 1rem; font-weight: 700; }
 .loopback::before { content: "←"; font-size: 1rem; }
 .loopback--spin::before { content: "↻"; }
 
-.roles { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: .4rem; margin-top: .15rem; }
+.orgchart { display: flex; flex-direction: column; align-items: center; margin-top: .3rem; }
+.orgchart__root { width: min(230px, 100%); }
+.orgchart__root::after {
+  content: ""; display: block; width: 1px; height: 14px;
+  background: rgba(248,248,242,.3); margin: 0 auto;
+}
+.orgchart__children { display: flex; gap: .5rem; width: 100%; padding-top: 14px; position: relative; }
+.orgchart__children::before {
+  content: ""; position: absolute; top: 0; left: 16.6%; right: 16.6%; height: 1px;
+  background: rgba(248,248,242,.3);
+}
+.orgchart__child { flex: 1; position: relative; }
+.orgchart__child::before {
+  content: ""; position: absolute; top: -14px; left: 50%; width: 1px; height: 14px;
+  background: rgba(248,248,242,.3);
+}
 .role {
   border: 1px solid #44475A; background: rgba(248,248,242,.04);
   padding: .5rem .65rem; display: flex; flex-direction: column; gap: .1rem;
@@ -560,8 +575,11 @@ h3 { font-size: 1rem; font-weight: 700; }
   html { scroll-snap-type: none; }
   .panel { min-height: auto; scroll-snap-stop: normal; padding-block: 3.5rem; }
   .dots { display: none; }
-  .g3, .g4, .flow, .loop, .bars, .evals, .summary, .roles { grid-template-columns: 1fr; }
+  .g3, .g4, .flow, .loop, .bars, .evals, .summary { grid-template-columns: 1fr; }
   .g2 { grid-template-columns: 1fr; }
   .cmux { grid-template-columns: 1fr; }
   .cmux__rail { border-right: 0; border-bottom: 1px solid rgba(248,248,242,.09); flex-direction: row; overflow-x: auto; }
+  .orgchart__root, .orgchart__children { width: 100%; }
+  .orgchart__children { flex-direction: column; gap: .4rem; padding-top: .4rem; }
+  .orgchart__root::after, .orgchart__children::before, .orgchart__child::before { display: none; }
 }
