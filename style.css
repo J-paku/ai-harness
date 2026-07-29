@@ -265,7 +265,7 @@ h3 { font-size: 1rem; font-weight: 700; }
 }
 
 /* ===== 概念: 入れ子バンド ===== */
-.nest { display: flex; flex-direction: column; gap: 0; }
+.nest { display: flex; flex-direction: column; gap: .8rem; }
 .band {
   border: 1px solid var(--rule);
   padding: clamp(.9rem, 2vh, 1.5rem);
@@ -274,11 +274,11 @@ h3 { font-size: 1rem; font-weight: 700; }
   flex-direction: column;
   gap: .8rem;
 }
+.band--outer { border-color: var(--signal); background: color-mix(in srgb, var(--signal) 20%, var(--surface)); }
+.band--outer > .band { border-color: var(--rule-strong); background: color-mix(in srgb, var(--signal) 8%, var(--surface)); }
+.band--outer > .band > .band { background: var(--surface); }
 .band--loop { border-style: dashed; border-color: var(--pass); background: color-mix(in srgb, var(--pass) 18%, var(--surface)); }
 .band--loop .band__label em { color: var(--pass); }
-.band--loop > .band { border-style: solid; border-color: var(--signal); background: color-mix(in srgb, var(--signal) 20%, var(--surface)); }
-.band--loop > .band > .band { border-color: var(--rule-strong); background: color-mix(in srgb, var(--signal) 8%, var(--surface)); }
-.band--loop > .band > .band > .band { background: var(--surface); }
 .band__label {
   display: flex;
   align-items: baseline;
