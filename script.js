@@ -69,6 +69,91 @@ panels.forEach((p) => {
 })
 const dotLinks = Array.from(dots.children)
 
+// ===== 表示設定: 言語切替 =====
+const langOpts = Array.from(settingsMenu.querySelectorAll('[data-set-lang]'))
+const i18nHtmlOriginals = new Map()
+const i18nAriaOriginals = new Map()
+const i18nNavOriginals = new Map()
+const i18nSuffixOriginals = new Map()
+// 助数詞(件/個)の日本語→韓国語マッピング。ここに無いsuffix(%・x等)はそのまま
+const suffixMapJaToKo = { '件': '건', '個': '개' }
+
+const getLang = () => {
+  try { return localStorage.getItem('hp-lang') === 'ko' ? 'ko' : 'ja' } catch (e) { return 'ja' }
+}
+
+const captureI18nOriginals = () => {
+  document.querySelectorAll('[data-i18n]').forEach((el) => {
+    if (!i18nHtmlOriginals.has(el)) i18nHtmlOriginals.set(el, el.innerHTML)
+  })
+  document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
+    if (!i18nAriaOriginals.has(el)) i18nAriaOriginals.set(el, el.getAttribute('aria-label'))
+  })
+  document.querySelectorAll('[data-i18n-nav]').forEach((el) => {
+    if (!i18nNavOriginals.has(el)) i18nNavOriginals.set(el, el.getAttribute('data-nav'))
+  })
+  document.querySelectorAll('[data-suffix]').forEach((el) => {
+    if (!i18nSuffixOriginals.has(el)) i18nSuffixOriginals.set(el, el.dataset.suffix)
+  })
+}
+
+// 生成済みの点ナビ(dots内の<a>)のtitle・aria-labelを、各パネルの現在のdata-navへ再同期
+const syncDotsNav = () => {
+  panels.forEach((p, i) => {
+    const label = p.dataset.nav || p.id
+    const a = dotLinks[i]
+    if (!a) return
+    a.title = label
+    a.setAttribute('aria-label', label)
+  })
+}
+
+// チップの助数詞(件/個)を現在言語へ差し替える。数値・カンマ書式は保持し末尾のみ置換する
+// (カウントアップ発火前ならdata-suffix更新のみで足り、発火時にその値がそのまま使われる)
+const applySuffixLang = (lang) => {
+  document.querySelectorAll('[data-suffix]').forEach((el) => {
+    const original = i18nSuffixOriginals.get(el)
+    const mapped = suffixMapJaToKo[original]
+    if (!mapped) return
+    const next = lang === 'ko' ? mapped : original
+    const current = el.dataset.suffix
+    if (current === next) return
+    if (el.textContent.endsWith(current)) {
+      el.textContent = el.textContent.slice(0, -current.length) + next
+    }
+    el.dataset.suffix = next
+  })
+}
+
+const applyLang = (lang) => {
+  captureI18nOriginals()
+  document.querySelectorAll('[data-i18n]').forEach((el) => {
+    const ko = window.I18N_KO?.[el.dataset.i18n]
+    el.innerHTML = lang === 'ko' && ko != null ? ko : i18nHtmlOriginals.get(el)
+  })
+  document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
+    const ko = window.I18N_KO?.[el.dataset.i18nAria]
+    el.setAttribute('aria-label', lang === 'ko' && ko != null ? ko : i18nAriaOriginals.get(el))
+  })
+  document.querySelectorAll('[data-i18n-nav]').forEach((el) => {
+    const ko = window.I18N_KO?.[el.dataset.i18nNav]
+    el.setAttribute('data-nav', lang === 'ko' && ko != null ? ko : i18nNavOriginals.get(el))
+  })
+  applySuffixLang(lang)
+  syncDotsNav()
+  document.documentElement.setAttribute('lang', lang)
+  langOpts.forEach((o) => o.setAttribute('aria-checked', String(o.dataset.setLang === lang)))
+  try { localStorage.setItem('hp-lang', lang) } catch (e) { /* 保存不可でも切替自体は成立させる */ }
+  syncTallPanels()
+}
+langOpts.forEach((o) => o.addEventListener('click', () => {
+  applyLang(o.dataset.setLang)
+  openSettings(false)
+  settingsBtn.focus()
+}))
+if (getLang() === 'ko') applyLang('ko')
+else langOpts.forEach((o) => o.setAttribute('aria-checked', String(o.dataset.setLang === 'ja')))
+
 // 出現アニメーション + カウントアップ + 棒グラフ伸長
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {

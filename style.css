@@ -296,57 +296,6 @@ h3 { font-size: 1rem; font-weight: 700; }
 }
 .band__note { font-size: .84rem; color: var(--ink-2); }
 
-/* ===== フロー ===== */
-/* 実行フロー: 中央の「並列生成」だけを反転させ、そこに担当役割を内包する
-   (役割はこの局面にしか存在しないため、位置そのものが情報になる) */
-.flow { display: grid; grid-template-columns: 1fr 1.45fr 1fr; gap: 1px; background: var(--rule); border: 1px solid var(--rule); align-items: stretch; }
-.flow__step { background: var(--surface); padding: clamp(.9rem, 1.8vw, 1.3rem); display: flex; flex-direction: column; gap: .6rem; }
-.flow__step h3 { display: flex; align-items: baseline; gap: .55rem; }
-.flow__step h3 em {
-  font-family: var(--mono); font-style: normal; font-size: .7rem;
-  letter-spacing: .12em; text-transform: uppercase; color: var(--signal);
-}
-.flow__list { list-style: none; display: flex; flex-direction: column; gap: .4rem; }
-.flow__list li { font-size: .83rem; color: var(--ink-2); line-height: 1.65; }
-.flow__step--lead { background: var(--lead-bg); color: #F8F8F2; box-shadow: inset 2px 0 0 var(--signal); }
-.flow__step--lead h3 { color: #F8F8F2; }
-.flow__step--lead h3 em { color: #BD93F9; }
-.flow__step--lead .flow__list li { color: #C7C7D1; }
-
-.loopback {
-  display: flex; align-items: center; gap: .8rem;
-  font-family: var(--mono); font-size: .73rem; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--pass);
-  border: 1px dashed var(--pass); padding: .55rem .9rem;
-}
-.loopback::before { content: "←"; font-size: 1rem; }
-.loopback--spin::before { content: "↻"; }
-
-.orgchart { display: flex; flex-direction: column; align-items: center; margin-top: .3rem; }
-.orgchart__root { width: min(230px, 100%); }
-.orgchart__root::after {
-  content: ""; display: block; width: 1px; height: 14px;
-  background: rgba(248,248,242,.3); margin: 0 auto;
-}
-.orgchart__children { display: flex; gap: .5rem; width: 100%; padding-top: 14px; position: relative; }
-.orgchart__children::before {
-  content: ""; position: absolute; top: 0; left: 16.6%; right: 16.6%; height: 1px;
-  background: rgba(248,248,242,.3);
-}
-.orgchart__child { flex: 1; position: relative; }
-.orgchart__child::before {
-  content: ""; position: absolute; top: -14px; left: 50%; width: 1px; height: 14px;
-  background: rgba(248,248,242,.3);
-}
-.role {
-  border: 1px solid #44475A; background: rgba(248,248,242,.04);
-  padding: .5rem .65rem; display: flex; flex-direction: column; gap: .1rem;
-}
-.role b { font-family: var(--mono); font-size: .78rem; letter-spacing: .01em; color: #F8F8F2; }
-.role small { font-size: .7rem; color: #8E90A8; line-height: 1.5; }
-.role--lead { border-color: rgba(189,147,249,.55); background: rgba(189,147,249,.12); }
-.role--lead b { color: #BD93F9; }
-
 /* ===== ターミナル模写 ===== */
 /* ターミナル模写: 入れ子スクロールを作らない。
    横スクロール枠にするとホイール操作がその要素にラッチされ、
@@ -384,24 +333,6 @@ h3 { font-size: 1rem; font-weight: 700; }
 .eval b { color: var(--ink); font-weight: 600; white-space: nowrap; }
 .eval span { color: var(--muted); font-family: var(--sans); font-size: .8rem; }
 .eval::before { content: "✓"; color: var(--pass); font-size: .8rem; }
-
-/* ===== instinct ループ ===== */
-.loop { display: grid; grid-template-columns: repeat(3, 1fr); gap: .55rem; position: relative; }
-.loop__node {
-  border: 1px solid var(--rule); background: var(--surface);
-  padding: .9rem 1rem; display: flex; flex-direction: column; gap: .3rem;
-}
-.loop__node em {
-  font-family: var(--mono); font-style: normal; font-size: .68rem;
-  letter-spacing: .13em; text-transform: uppercase; color: var(--signal);
-}
-.loop__node p { font-size: .82rem; color: var(--ink-2); }
-.decay { display: flex; align-items: flex-end; gap: 1.4rem; height: clamp(90px, 16vh, 140px); }
-.decay__bar { display: flex; flex-direction: column; align-items: center; gap: .4rem; flex: 1; height: 100%; justify-content: flex-end; }
-.decay__fill { width: 100%; background: var(--signal); }
-.decay__fill.is-zero { background: var(--pass); height: 4px !important; }
-.decay__n { font-family: var(--mono); font-size: 1rem; font-weight: 700; font-variant-numeric: tabular-nums; }
-.decay__lab { font-family: var(--mono); font-size: .7rem; color: var(--muted); }
 
 /* ===== CMUX 模写 ===== */
 .cmux { border: 1px solid #44475A; background: var(--term-bg); display: grid; grid-template-columns: 190px 1fr; overflow: hidden; }
@@ -556,6 +487,53 @@ h3 { font-size: 1rem; font-weight: 700; }
 }
 @keyframes drop { 0%,100% { transform: scaleY(.4); opacity: .5 } 50% { transform: scaleY(1); opacity: 1 } }
 
+/* ===== SVGダイアグラム =====
+   色は全てCSSトークン参照でライト/ダークに自動追従。
+   例外: 生成(並列)の暗色パネルとターミナル風チップはDracula固定(既存方針と同一)。 */
+.dia { width: 100%; height: auto; }
+.dia text { font-family: var(--sans); font-size: 13.5px; fill: var(--ink); }
+.dia .dm { font-family: var(--mono); }
+.dia .dt { font-size: 17px; font-weight: 700; }
+.dia .dst { font-size: 14px; font-weight: 700; }
+.dia .db { font-size: 13.5px; fill: var(--ink-2); }
+.dia .didx { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; fill: var(--signal); font-weight: 700; }
+.dia .dmut { font-size: 11.5px; fill: var(--muted); }
+.dia .dbox { fill: var(--surface); stroke: var(--rule); }
+.dia .dbullet { fill: var(--rule-strong); }
+.dia .dloop { font-size: 12px; fill: var(--pass); letter-spacing: .06em; }
+.dia .dx { font-size: 17px; font-weight: 700; fill: var(--alert); }
+.dia .ddrop { font-size: 11px; fill: var(--alert); }
+.dia .dcheck { font-size: 15px; font-weight: 700; fill: var(--pass); }
+.dia .dw { fill: #F8F8F2; }
+.dia .dwm { fill: #C7C7D1; }
+.dia .dwp { fill: #BD93F9; }
+.dia .dws { font-size: 10.5px; fill: #8E90A8; }
+.dia .dstack { fill: var(--surface-2); stroke: var(--rule); }
+.dia .dsel { fill: var(--signal-soft); stroke: var(--signal); }
+.dia .dsel2 { fill: var(--signal-soft); stroke: var(--signal); }
+.dia .dspin { font-size: 30px; fill: var(--signal); }
+.dia .dnum { font-family: var(--mono); font-size: 17px; font-weight: 700; fill: var(--ink); }
+.dia .dlab { font-size: 11px; fill: var(--muted); }
+.dia .dperson circle, .dia .dperson path { fill: none; stroke: var(--ink-2); stroke-width: 1.6; }
+.dia--loop { max-width: 760px; margin-inline: auto; }
+.dia--decay { max-width: 320px; }
+
+/* ===== SVGダイアグラム: セクション別レスポンシブ上限 =====
+   各セクションの固定コンテンツ高(見出し・本文・カード等)を差し引いた
+   残りvhにダイアグラムを収め、1画面(1パネル)への収束を狙う。
+   下限170pxは可読性維持のため崩さない(max()で保護)。 */
+#s2 .dia { max-height: max(170px, calc(100vh - 290px)); }
+#s3 .dia { max-height: max(170px, calc(100vh - 540px)); }
+#s5 .dia { max-height: max(170px, calc(100vh - 760px)); }
+#s7 .dia { max-height: max(170px, calc(100vh - 615px)); }
+#s9 .dia { max-height: max(170px, calc(100vh - 560px)); }
+
+/* ===== s5: カード2+ターミナルの固定分が大きく、キャップだけでは
+   1画面に収束しないため間隔を圧縮して補う(このセクション限定)。 */
+#s5 .panel__inner { gap: clamp(.7rem, 1.3vh, 1.1rem); }
+#s5 .card { padding: clamp(.5rem, .9vw, .75rem); gap: .32rem; }
+#s5 .term__body { padding: .45rem .7rem; }
+
 /* ===== 出現アニメーション ===== */
 .reveal { opacity: 0; transform: translateY(10px); transition: opacity .6s ease, transform .6s cubic-bezier(.22,.8,.3,1); }
 .reveal.is-in { opacity: 1; transform: none; }
@@ -575,11 +553,14 @@ h3 { font-size: 1rem; font-weight: 700; }
   html { scroll-snap-type: none; }
   .panel { min-height: auto; scroll-snap-stop: normal; padding-block: 3.5rem; }
   .dots { display: none; }
-  .g3, .g4, .flow, .loop, .bars, .evals, .summary { grid-template-columns: 1fr; }
+  /* 幅広ダイアグラムは横スクロール(スナップ解除域のみなのでホイールのラッチ問題なし) */
+  .dia-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .dia-wrap .dia { min-width: 820px; }
+  .dia-wrap .dia--decay { min-width: 0; }
+  /* 横スクロール域ではvh上限を無効化し、等倍で読める幅を確保する */
+  #s2 .dia, #s3 .dia, #s5 .dia, #s7 .dia, #s9 .dia { max-height: none; }
+  .g3, .g4, .bars, .evals, .summary { grid-template-columns: 1fr; }
   .g2 { grid-template-columns: 1fr; }
   .cmux { grid-template-columns: 1fr; }
   .cmux__rail { border-right: 0; border-bottom: 1px solid rgba(248,248,242,.09); flex-direction: row; overflow-x: auto; }
-  .orgchart__root, .orgchart__children { width: 100%; }
-  .orgchart__children { flex-direction: column; gap: .4rem; padding-top: .4rem; }
-  .orgchart__root::after, .orgchart__children::before, .orgchart__child::before { display: none; }
 }

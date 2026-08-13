@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="AIエージェント開発環境(ハーネス)の構築・配布・定着と、その効果と課題の記録。">
-<title>Harness Engineering — AIエージェント開発環境の構築と社内展開</title>
+<title data-i18n="doc-title">Harness Engineering — AIエージェント開発環境の構築と社内展開</title>
 <link rel="stylesheet" href="style.css">
 <script>
   // 保存済みテーマを描画前に適用(切替時のちらつき防止)
@@ -17,16 +17,16 @@
 <body>
 
 <div class="progress"><div class="progress__fill" id="progressFill"></div></div>
-<nav class="dots" id="dots" aria-label="セクション"></nav>
+<nav class="dots" id="dots" aria-label="セクション" data-i18n-aria="nav-dots-aria"></nav>
 
 <div class="settings" id="settings">
-  <button class="settings__btn" id="settingsBtn" type="button" aria-label="表示設定" aria-expanded="false" aria-controls="settingsMenu">
+  <button class="settings__btn" id="settingsBtn" type="button" aria-label="表示設定" data-i18n-aria="settings-btn-aria" aria-expanded="false" aria-controls="settingsMenu">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <circle cx="12" cy="12" r="3.2"></circle>
       <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
     </svg>
   </button>
-  <div class="settings__menu" id="settingsMenu" role="menu" aria-label="テーマ" hidden>
+  <div class="settings__menu" id="settingsMenu" role="menu" aria-label="表示設定" hidden>
     <p class="settings__label">Theme</p>
     <button class="settings__opt" type="button" role="menuitemradio" data-set-theme="system" aria-checked="true">
       システムに合わせる
@@ -39,22 +39,29 @@
       Dracula
       <span class="settings__swatch" aria-hidden="true"><i style="background:#282A36"></i><i style="background:#BD93F9"></i><i style="background:#50FA7B"></i></span>
     </button>
+    <p class="settings__label">Language</p>
+    <button class="settings__opt" type="button" role="menuitemradio" data-set-lang="ja" aria-checked="true">
+      日本語
+    </button>
+    <button class="settings__opt" type="button" role="menuitemradio" data-set-lang="ko" aria-checked="false">
+      한국어
+    </button>
   </div>
 </div>
 
 <main>
 
 <!-- 00 ヒーロー -->
-<section class="panel hero" id="s0" data-nav="Intro">
+<section class="panel hero" id="s0" data-nav="Intro" data-i18n-nav="s0-nav">
   <div class="panel__inner hero__inner">
-    <p class="eyebrow reveal"><span class="idx">00</span> Portfolio / AI Engineering</p>
-    <h1 class="reveal">AIエージェントが<br><span class="hl">迷わず動ける環境</span>を、<br>設計する。</h1>
-    <p class="hero__sub reveal">プロンプトでもモデルでもなく、AIの行動と環境そのものを設計する。構築したマルチエージェント開発環境をチームに配布・定着させながら、その成果と課題を数値で検証してきた記録である。</p>
+    <p class="eyebrow reveal" data-i18n="s0-eyebrow"><span class="idx">00</span> Portfolio / AI Engineering</p>
+    <h1 class="reveal" data-i18n="s0-h1">AIエージェントが<br><span class="hl">迷わず動ける環境</span>を、<br>設計する。</h1>
+    <p class="hero__sub reveal" data-i18n="s0-sub">プロンプトでもモデルでもなく、AIの行動と環境そのものを設計する。構築したマルチエージェント開発環境をチームに配布・定着させながら、その成果と課題を数値で検証してきた記録である。</p>
     <div class="chips reveal">
-      <div class="chip"><b data-count="2.8" data-suffix="x">2.8x</b><small>チーム月間コミット</small></div>
-      <div class="chip"><b data-count="87.6" data-suffix="%">87.6%</b><small>無介入完了率</small></div>
-      <div class="chip"><b data-count="105" data-suffix="件">105件</b><small>AIチーム自動実行</small></div>
-      <div class="chip"><b data-count="25" data-suffix="個">25個</b><small>強制フック</small></div>
+      <div class="chip"><b data-count="2.8" data-suffix="x">2.8x</b><small data-i18n="s0-chip1">チーム月間コミット</small></div>
+      <div class="chip"><b data-count="87.6" data-suffix="%">87.6%</b><small data-i18n="s0-chip2">無介入完了率</small></div>
+      <div class="chip"><b data-count="105" data-suffix="件">105件</b><small data-i18n="s0-chip3">AIチーム自動実行</small></div>
+      <div class="chip"><b data-count="25" data-suffix="個">25個</b><small data-i18n="s0-chip4">強制フック</small></div>
     </div>
     <div class="hero__meta reveal">
       <span>Harness Engineering</span><span>Multi-Agent Orchestration</span><span>2026</span>
@@ -64,26 +71,26 @@
 </section>
 
 <!-- 01 概念 -->
-<section class="panel" id="s1" data-nav="定義">
+<section class="panel" id="s1" data-nav="定義" data-i18n-nav="s1-nav">
   <div class="panel__inner">
     <header class="head reveal">
-      <p class="eyebrow"><span class="idx">01</span> 定義 / What is a harness</p>
-      <h2>ハーネスエンジニアリングとは</h2>
-      <p class="lede">プロンプトエンジニアリングとコンテキストエンジニアリングを包含する、上位概念。「何を言うか」ではなく「AIがどんな環境で、どこまで動けるか」を設計する領域として、2026年に公式化された。</p>
+      <p class="eyebrow" data-i18n="s1-eyebrow"><span class="idx">01</span> 定義 / What is a harness</p>
+      <h2 data-i18n="s1-h2">ハーネスエンジニアリングとは</h2>
+      <p class="lede" data-i18n="s1-lede">プロンプトエンジニアリングとコンテキストエンジニアリングを包含する、上位概念。「何を言うか」ではなく「AIがどんな環境で、どこまで動けるか」を設計する領域として、2026年に公式化された。</p>
     </header>
     <div class="nest reveal">
       <div class="band band--loop">
-        <div class="band__label"><b>ループエンジニアリング</b><em>Loop Engineering</em></div>
-        <p class="band__note">2026年6月、Anthropic社Claude Code開発者Boris ChernyとPeter Steinbergerの投稿から広まり、Andrew Ngが「3つの入れ子フィードバックループ」として定式化した概念。</p>
+        <div class="band__label"><b data-i18n="s1-band-loop-label">ループエンジニアリング</b><em>Loop Engineering</em></div>
+        <p class="band__note" data-i18n="s1-band-loop-note">2026年6月、Anthropic社Claude Code開発者Boris ChernyとPeter Steinbergerの投稿から広まり、Andrew Ngが「3つの入れ子フィードバックループ」として定式化した概念。</p>
         <div class="band">
-          <div class="band__label"><b>ハーネスエンジニアリング</b><em>Harness Engineering</em></div>
-          <p class="band__note">AIの行動・権限・環境そのものを設計する。フック、ワークフロー、評価、隔離、配布までを含む。</p>
+          <div class="band__label"><b data-i18n="s1-band-harness-label">ハーネスエンジニアリング</b><em>Harness Engineering</em></div>
+          <p class="band__note" data-i18n="s1-band-harness-note">AIの行動・権限・環境そのものを設計する。フック、ワークフロー、評価、隔離、配布までを含む。</p>
           <div class="band">
-            <div class="band__label"><b>コンテキストエンジニアリング</b><em>Context Engineering</em></div>
-            <p class="band__note">必要な文脈だけを、必要なときに供給する。</p>
+            <div class="band__label"><b data-i18n="s1-band-context-label">コンテキストエンジニアリング</b><em>Context Engineering</em></div>
+            <p class="band__note" data-i18n="s1-band-context-note">必要な文脈だけを、必要なときに供給する。</p>
             <div class="band">
-              <div class="band__label"><b>プロンプトエンジニアリング</b><em>Prompt Engineering</em></div>
-              <p class="band__note">依頼の書き方を磨く。</p>
+              <div class="band__label"><b data-i18n="s1-band-prompt-label">プロンプトエンジニアリング</b><em>Prompt Engineering</em></div>
+              <p class="band__note" data-i18n="s1-band-prompt-note">依頼の書き方を磨く。</p>
             </div>
           </div>
         </div>
@@ -93,91 +100,162 @@
 </section>
 
 <!-- 02 実行フロー -->
-<section class="panel" id="s2" data-nav="実行フロー">
+<section class="panel" id="s2" data-nav="実行フロー" data-i18n-nav="s2-nav">
   <div class="panel__inner">
     <header class="head reveal">
-      <p class="eyebrow"><span class="idx">02</span> 構築 / Execution flow</p>
-      <h2>準備は直列、生成だけ並列、評価が先頭へ戻る</h2>
-      <p class="lede">ひとつの依頼は、3つの局面を経て動く。監督モデルは実装をせず、分析・分配・最終判定だけに専念する。</p>
+      <p class="eyebrow" data-i18n="s2-eyebrow"><span class="idx">02</span> 構築 / Execution flow</p>
+      <h2 data-i18n="s2-h2">準備は直列、生成だけ並列、評価が先頭へ戻る</h2>
+      <p class="lede" data-i18n="s2-lede">ひとつの依頼は、3つの局面を経て動く。監督モデルは実装をせず、分析・分配・最終判定だけに専念する。</p>
     </header>
-    <div class="flow reveal">
-      <div class="flow__step">
-        <h3><em>01</em>準備(直列)</h3>
-        <ul class="flow__list">
-          <li>曖昧な依頼をカスタムコマンドで役割・文脈付きの指示書へ変換</li>
-          <li>約100本の文書からルーターが該当分だけを選定</li>
-        </ul>
-      </div>
-      <div class="flow__step flow__step--lead">
-        <h3><em>02</em>生成(並列)</h3>
-        <ul class="flow__list">
-          <li>複数ワーカーが識別番号付きで同時修正、コンフリクトなし</li>
-          <li>スタイル・型・importをフックが機械検査</li>
-        </ul>
-        <div class="orgchart">
-          <div class="role role--lead orgchart__root"><b>監督</b><small>分析→プラン→分配→最終判定</small></div>
-          <div class="orgchart__children">
-            <div class="role orgchart__child"><b>主力ワーカー</b><small>シニア相当・実装本体</small></div>
-            <div class="role orgchart__child"><b>検証ワーカー</b><small>ミドル相当・検証+フォールバック</small></div>
-            <div class="role orgchart__child"><b>軽量ワーカー</b><small>ジュニア相当・UI/スタイル</small></div>
-          </div>
-        </div>
-      </div>
-      <div class="flow__step">
-        <h3><em>03</em>採点・学習</h3>
-        <ul class="flow__list">
-          <li>結果を基準判定・回帰テストで自動採点</li>
-          <li>全ツール呼出をJSONL traceで記録</li>
-        </ul>
-      </div>
+<div class="dia-wrap reveal">
+      <svg class="dia" viewBox="0 0 1160 520" role="img" aria-label="実行フロー: 準備は直列、生成だけ並列、評価が先頭へ戻る自己改善ループ" data-i18n-aria="s2-dia-aria">
+        <!-- 局面1: 準備(直列) -->
+        <rect class="dbox" x="10" y="60" width="290" height="310"/>
+        <text class="didx" x="34" y="100">01</text>
+        <text class="dt" x="64" y="101" data-i18n="s2-dia-phase1-title">準備(直列)</text>
+        <rect class="dbullet" x="34" y="134" width="5" height="5"/>
+        <text class="db" x="50" y="142" data-i18n="s2-dia-phase1-b1">曖昧な依頼をカスタムコマンドで<tspan x="50" dy="21">役割・文脈付きの指示書へ変換</tspan></text>
+        <rect class="dbullet" x="34" y="202" width="5" height="5"/>
+        <text class="db" x="50" y="210" data-i18n="s2-dia-phase1-b2">約100本の文書からルーターが<tspan x="50" dy="21">該当分だけを選定</tspan></text>
+        <!-- 局面1 → 局面2 -->
+        <line x1="300" y1="215" x2="348" y2="215" stroke="var(--muted)" stroke-width="1.5"/>
+        <polygon points="346,209 358,215 346,221" fill="var(--muted)"/>
+        <!-- 局面2: 生成(並列) — ターミナル同様に両テーマともDracula地面で固定 -->
+        <rect x="360" y="30" width="440" height="370" fill="var(--lead-bg)" stroke="#44475A"/>
+        <rect x="360" y="30" width="3" height="370" fill="#BD93F9"/>
+        <text class="didx dwp" x="386" y="72">02</text>
+        <text class="dt dw" x="416" y="73" data-i18n="s2-dia-phase2-title">生成(並列)</text>
+        <text class="db dwm" x="386" y="106" data-i18n="s2-dia-phase2-b1">複数ワーカーが識別番号付きで同時修正</text>
+        <text class="db dwm" x="386" y="128" data-i18n="s2-dia-phase2-b2">スタイル・型・importをフックが機械検査</text>
+        <!-- 監督→ワーカーの組織図 -->
+        <rect x="470" y="148" width="220" height="56" fill="rgba(189,147,249,.12)" stroke="rgba(189,147,249,.55)"/>
+        <text class="dm dwp" x="580" y="171" text-anchor="middle" font-size="13" font-weight="700" data-i18n="s2-dia-supervisor">監督</text>
+        <text class="dws" x="580" y="190" text-anchor="middle" data-i18n="s2-dia-supervisor-flow">分析 → プラン → 分配 → 最終判定</text>
+        <line x1="580" y1="204" x2="580" y2="224" stroke="rgba(248,248,242,.3)"/>
+        <line x1="445" y1="224" x2="715" y2="224" stroke="rgba(248,248,242,.3)"/>
+        <line x1="445" y1="224" x2="445" y2="240" stroke="rgba(248,248,242,.3)"/>
+        <line x1="580" y1="224" x2="580" y2="240" stroke="rgba(248,248,242,.3)"/>
+        <line x1="715" y1="224" x2="715" y2="240" stroke="rgba(248,248,242,.3)"/>
+        <rect x="382" y="240" width="126" height="94" fill="rgba(248,248,242,.04)" stroke="#44475A"/>
+        <text class="dm dw" x="445" y="266" text-anchor="middle" font-size="12" font-weight="600" data-i18n="s2-dia-worker1-title">主力ワーカー</text>
+        <text class="dws" x="445" y="288" text-anchor="middle" data-i18n="s2-dia-worker1-sub1">シニア相当</text>
+        <text class="dws" x="445" y="305" text-anchor="middle" data-i18n="s2-dia-worker1-sub2">実装本体</text>
+        <rect x="517" y="240" width="126" height="94" fill="rgba(248,248,242,.04)" stroke="#44475A"/>
+        <text class="dm dw" x="580" y="266" text-anchor="middle" font-size="12" font-weight="600" data-i18n="s2-dia-worker2-title">検証ワーカー</text>
+        <text class="dws" x="580" y="288" text-anchor="middle" data-i18n="s2-dia-worker2-sub1">ミドル相当</text>
+        <text class="dws" x="580" y="305" text-anchor="middle" data-i18n="s2-dia-worker2-sub2">検証+フォールバック</text>
+        <rect x="652" y="240" width="126" height="94" fill="rgba(248,248,242,.04)" stroke="#44475A"/>
+        <text class="dm dw" x="715" y="266" text-anchor="middle" font-size="12" font-weight="600" data-i18n="s2-dia-worker3-title">軽量ワーカー</text>
+        <text class="dws" x="715" y="288" text-anchor="middle" data-i18n="s2-dia-worker3-sub1">ジュニア相当</text>
+        <text class="dws" x="715" y="305" text-anchor="middle" data-i18n="s2-dia-worker3-sub2">UI / スタイル</text>
+        <!-- 局面2 → 局面3 -->
+        <line x1="800" y1="215" x2="848" y2="215" stroke="var(--muted)" stroke-width="1.5"/>
+        <polygon points="846,209 858,215 846,221" fill="var(--muted)"/>
+        <!-- 局面3: 採点・学習 -->
+        <rect class="dbox" x="860" y="60" width="290" height="310"/>
+        <text class="didx" x="884" y="100">03</text>
+        <text class="dt" x="914" y="101" data-i18n="s2-dia-phase3-title">採点・学習</text>
+        <rect class="dbullet" x="884" y="134" width="5" height="5"/>
+        <text class="db" x="900" y="142" data-i18n="s2-dia-phase3-b1">結果を基準判定・回帰テストで<tspan x="900" dy="21">自動採点</tspan></text>
+        <rect class="dbullet" x="884" y="202" width="5" height="5"/>
+        <text class="db" x="900" y="210" data-i18n="s2-dia-phase3-b2">全ツール呼出を<tspan x="900" dy="21">JSONL traceで記録</tspan></text>
+        <!-- 自己改善ループ(局面3 → 局面1へ戻る) -->
+        <path d="M 1005 370 L 1005 465 L 800 465" fill="none" stroke="var(--pass)" stroke-width="1.5" stroke-dasharray="5 5"/>
+        <path d="M 360 465 L 155 465 L 155 384" fill="none" stroke="var(--pass)" stroke-width="1.5" stroke-dasharray="5 5"/>
+        <polygon points="149,386 155,374 161,386" fill="var(--pass)"/>
+        <text class="dm dloop" x="580" y="470" text-anchor="middle" data-i18n="s2-dia-loop-caption">↻ 自己改善ループ — 評価結果が次の依頼に反映</text>
+      </svg>
     </div>
-    <p class="loopback reveal">自己改善ループ — 評価結果とフィードバックが次の依頼に反映され、同じミスを繰り返さない</p>
   </div>
 </section>
 
 <!-- 03 フック -->
-<section class="panel" id="s3" data-nav="フック">
+<section class="panel" id="s3" data-nav="フック" data-i18n-nav="s3-nav">
   <div class="panel__inner">
     <header class="head reveal">
-      <p class="eyebrow"><span class="idx">03</span> 構築 / Guardrails</p>
-      <h2>フック25個 — AIの行動をコードで強制する</h2>
-      <p class="lede">レビューで指摘するより先に、誤ったコードがそもそも入らない状態をつくる。実行前後の4局面に検査を配置した。</p>
+      <p class="eyebrow" data-i18n="s3-eyebrow"><span class="idx">03</span> 構築 / Guardrails</p>
+      <h2 data-i18n="s3-h2">フック25個 — AIの行動をコードで強制する</h2>
+      <p class="lede" data-i18n="s3-lede">レビューで指摘するより先に、誤ったコードがそもそも入らない状態をつくる。実行前後の4局面に検査を配置した。</p>
     </header>
+    <div class="dia-wrap reveal">
+      <svg class="dia" viewBox="0 0 1160 300" role="img" aria-label="フックの4局面: 生成されたコードが4つの検査を通過し、違反はレビュー前に落ちる" data-i18n-aria="s3-dia-aria">
+        <!-- コードの流れ(横断ライン) -->
+        <text class="dmut" x="22" y="88" data-i18n="s3-dia-code-label">生成されたコード</text>
+        <line x1="15" y1="120" x2="1088" y2="120" stroke="var(--rule-strong)" stroke-width="1.5"/>
+        <polygon points="1086,114 1098,120 1086,126" fill="var(--rule-strong)"/>
+        <rect x="28" y="112" width="14" height="14" fill="var(--surface-2)" stroke="var(--rule-strong)"/>
+        <rect x="56" y="112" width="14" height="14" fill="var(--surface-2)" stroke="var(--rule-strong)"/>
+        <rect x="84" y="112" width="14" height="14" fill="var(--surface-2)" stroke="var(--rule-strong)"/>
+        <!-- 4つのゲート -->
+        <rect class="dbox" x="150" y="60" width="150" height="120"/>
+        <text class="didx" x="225" y="84" text-anchor="middle">PROMPT</text>
+        <text class="dst" x="225" y="108" text-anchor="middle" data-i18n="s3-dia-prompt-st">入力前処理</text>
+        <text class="dmut" x="225" y="132" text-anchor="middle" data-i18n="s3-dia-prompt-m1">冗長を圧縮</text>
+        <text class="dmut" x="225" y="150" text-anchor="middle" data-i18n="s3-dia-prompt-m2">トークン約65%減</text>
+        <rect class="dbox" x="390" y="60" width="150" height="120"/>
+        <text class="didx" x="465" y="84" text-anchor="middle">PRE</text>
+        <text class="dst" x="465" y="108" text-anchor="middle" data-i18n="s3-dia-pre-st">実行前ブロック</text>
+        <text class="dmut" x="465" y="132" text-anchor="middle" data-i18n="s3-dia-pre-m1">危険git・rmを遮断</text>
+        <text class="dmut" x="465" y="150" text-anchor="middle" data-i18n="s3-dia-pre-m2">worktree隔離</text>
+        <rect class="dbox" x="630" y="60" width="150" height="120"/>
+        <text class="didx" x="705" y="84" text-anchor="middle">POST</text>
+        <text class="dst" x="705" y="108" text-anchor="middle" data-i18n="s3-dia-post-st">実行後検証</text>
+        <text class="dmut" x="705" y="132" text-anchor="middle" data-i18n="s3-dia-post-m1">スタイル・型を検査</text>
+        <text class="dmut" x="705" y="150" text-anchor="middle" data-i18n="s3-dia-post-m2">JSONL記録</text>
+        <rect class="dbox" x="870" y="60" width="150" height="120"/>
+        <text class="didx" x="945" y="84" text-anchor="middle">STOP</text>
+        <text class="dst" x="945" y="108" text-anchor="middle" data-i18n="s3-dia-stop-st">終了処理</text>
+        <text class="dmut" x="945" y="132" text-anchor="middle" data-i18n="s3-dia-stop-m1">自動採点</text>
+        <text class="dmut" x="945" y="150" text-anchor="middle" data-i18n="s3-dia-stop-m2">完了を通知</text>
+        <!-- 違反コードの脱落 -->
+        <line x1="465" y1="180" x2="465" y2="222" stroke="var(--alert)" stroke-dasharray="4 4"/>
+        <text class="dx" x="465" y="242" text-anchor="middle">×</text>
+        <text class="dm ddrop" x="465" y="266" text-anchor="middle" data-i18n="s3-dia-drop1">git reset --hard など6種</text>
+        <line x1="705" y1="180" x2="705" y2="222" stroke="var(--alert)" stroke-dasharray="4 4"/>
+        <text class="dx" x="705" y="242" text-anchor="middle">×</text>
+        <text class="dm ddrop" x="705" y="266" text-anchor="middle" data-i18n="s3-dia-drop2">any・セミコロン・相対import</text>
+        <!-- 通過 -->
+        <circle cx="1122" cy="120" r="16" fill="var(--pass-soft)" stroke="var(--pass)"/>
+        <text class="dcheck" x="1122" y="126" text-anchor="middle">✓</text>
+        <text class="dmut" x="1122" y="166" text-anchor="middle" data-i18n="s3-dia-pass1">クリーンな</text>
+        <text class="dmut" x="1122" y="182" text-anchor="middle" data-i18n="s3-dia-pass2">コードのみ</text>
+      </svg>
+    </div>
     <div class="grid g4 reveal">
       <div class="card">
         <span class="card__tag">Prompt</span>
-        <h3>入力前処理</h3>
+        <h3 data-i18n="s3-card-prompt-h3">入力前処理</h3>
         <ul>
-          <li>冗長表現を削り出力を圧縮、トークン約65%削減</li>
-          <li>会話が長期化して文脈が圧縮されても重要ルールを保持</li>
+          <li data-i18n="s3-card-prompt-li1">冗長表現を削り出力を圧縮、トークン約65%削減</li>
+          <li data-i18n="s3-card-prompt-li2">会話が長期化して文脈が圧縮されても重要ルールを保持</li>
         </ul>
       </div>
       <div class="card">
         <span class="card__tag">Pre</span>
-        <h3>実行前ブロック</h3>
+        <h3 data-i18n="s3-card-pre-h3">実行前ブロック</h3>
         <ul>
-          <li>危険な<code>git</code>・<code>rm</code>系6種を遮断</li>
-          <li>未コミット時の<code>checkout</code>を遮断</li>
-          <li>新規ファイルにヘッダー必須</li>
-          <li>ワーカーを<code>worktree</code>隔離</li>
+          <li data-i18n="s3-card-pre-li1">危険な<code>git</code>・<code>rm</code>系6種を遮断</li>
+          <li data-i18n="s3-card-pre-li2">未コミット時の<code>checkout</code>を遮断</li>
+          <li data-i18n="s3-card-pre-li3">新規ファイルにヘッダー必須</li>
+          <li data-i18n="s3-card-pre-li4">ワーカーを<code>worktree</code>隔離</li>
         </ul>
       </div>
       <div class="card">
         <span class="card__tag">Post</span>
-        <h3>実行後検証</h3>
+        <h3 data-i18n="s3-card-post-h3">実行後検証</h3>
         <ul>
-          <li><code>any</code>・セミコロン・ダブルクォートを禁止</li>
-          <li>階層をまたぐ相対importを禁止</li>
-          <li>自動整形と文書同期リマインド</li>
-          <li>全ツール呼出をJSONL記録</li>
+          <li data-i18n="s3-card-post-li1"><code>any</code>・セミコロン・ダブルクォートを禁止</li>
+          <li data-i18n="s3-card-post-li2">階層をまたぐ相対importを禁止</li>
+          <li data-i18n="s3-card-post-li3">自動整形と文書同期リマインド</li>
+          <li data-i18n="s3-card-post-li4">全ツール呼出をJSONL記録</li>
         </ul>
       </div>
       <div class="card">
         <span class="card__tag">Stop</span>
-        <h3>終了処理</h3>
+        <h3 data-i18n="s3-card-stop-h3">終了処理</h3>
         <ul>
-          <li>セッション終了時に自動採点を実行</li>
-          <li>完了を通知</li>
+          <li data-i18n="s3-card-stop-li1">セッション終了時に自動採点を実行</li>
+          <li data-i18n="s3-card-stop-li2">完了を通知</li>
         </ul>
       </div>
     </div>
@@ -185,12 +263,12 @@
 </section>
 
 <!-- 04 フック実例 -->
-<section class="panel" id="s4" data-nav="遮断の瞬間">
+<section class="panel" id="s4" data-nav="遮断の瞬間" data-i18n-nav="s4-nav">
   <div class="panel__inner">
     <header class="head reveal">
-      <p class="eyebrow"><span class="idx">04</span> 構築 / In practice</p>
-      <h2>未コミットの作業を、checkout一つで消させない</h2>
-      <p class="lede">ワーカーはworktreeで隔離されていても、未コミットのままcheckoutすれば、積み上げた成果はそのまま消えてしまう。フックが実行前に止め、AIは選択肢を提示して判断を人に返す。</p>
+      <p class="eyebrow" data-i18n="s4-eyebrow"><span class="idx">04</span> 構築 / In practice</p>
+      <h2 data-i18n="s4-h2">未コミットの作業を、checkout一つで消させない</h2>
+      <p class="lede" data-i18n="s4-lede">ワーカーはworktreeで隔離されていても、未コミットのままcheckoutすれば、積み上げた成果はそのまま消えてしまう。フックが実行前に止め、AIは選択肢を提示して判断を人に返す。</p>
     </header>
     <div class="term reveal">
       <div class="term__bar"><span class="term__dot" style="background:#FF5555"></span><span class="term__dot" style="background:#F1FA8C"></span><span class="term__dot" style="background:#50FA7B"></span><span>pre-tool-use / block-checkout</span></div>
@@ -218,31 +296,75 @@ app-web/AGENTS.mdに未コミット変更あり。mainへ切替方法は?
 </section>
 
 <!-- 05 コンテキスト・スキル -->
-<section class="panel" id="s5" data-nav="コンテキスト">
+<section class="panel" id="s5" data-nav="コンテキスト" data-i18n-nav="s5-nav">
   <div class="panel__inner">
     <header class="head reveal">
-      <p class="eyebrow"><span class="idx">05</span> 構築 / Context routing</p>
-      <h2>文書は約100本。全部は読ませない</h2>
-      <p class="lede">文脈は量より、精度がものを言う。ルーター文書が作業内容に応じて該当文書だけを選び、無駄な文脈を積ませない。</p>
+      <p class="eyebrow" data-i18n="s5-eyebrow"><span class="idx">05</span> 構築 / Context routing</p>
+      <h2 data-i18n="s5-h2">文書は約100本。全部は読ませない</h2>
+      <p class="lede" data-i18n="s5-lede">文脈は量より、精度がものを言う。ルーター文書が作業内容に応じて該当文書だけを選び、無駄な文脈を積ませない。</p>
     </header>
+    <div class="dia-wrap reveal">
+      <svg class="dia" viewBox="0 0 1160 330" role="img" aria-label="コンテキストルーティング: 約100本の文書からルーターが該当分だけをAIの文脈へ渡す" data-i18n-aria="s5-dia-aria">
+        <!-- 文書スタック(約100本) -->
+        <rect class="dstack" x="40" y="40" width="170" height="18"/>
+        <rect class="dstack dsel" x="40" y="64" width="170" height="18"/>
+        <rect class="dstack" x="40" y="88" width="170" height="18"/>
+        <rect class="dstack" x="40" y="112" width="170" height="18"/>
+        <rect class="dstack dsel" x="40" y="136" width="170" height="18"/>
+        <rect class="dstack" x="40" y="160" width="170" height="18"/>
+        <rect class="dstack" x="40" y="184" width="170" height="18"/>
+        <rect class="dstack dsel" x="40" y="208" width="170" height="18"/>
+        <rect class="dstack" x="40" y="232" width="170" height="18"/>
+        <rect class="dstack" x="40" y="256" width="170" height="18"/>
+        <text class="dmut" x="125" y="300" text-anchor="middle" data-i18n="s5-dia-doc-count">文書 約100本</text>
+        <!-- 作業依頼 → ルーター -->
+        <rect class="dbox" x="470" y="20" width="220" height="44"/>
+        <text class="db" x="580" y="47" text-anchor="middle" data-i18n="s5-dia-request">作業依頼(何をするか)</text>
+        <line x1="580" y1="64" x2="580" y2="106" stroke="var(--muted)" stroke-width="1.5"/>
+        <polygon points="574,104 580,116 586,104" fill="var(--muted)"/>
+        <!-- ルーター本体 -->
+        <rect class="dbox" x="470" y="120" width="220" height="90" style="stroke:var(--signal)"/>
+        <text class="didx" x="494" y="146">ROUTER</text>
+        <text class="dm dst" x="494" y="170">AGENTS.md</text>
+        <text class="dmut" x="494" y="192" data-i18n="s5-dia-router-desc">作業内容で該当文書を判定</text>
+        <!-- 該当文書だけ読む(選定線) -->
+        <line x1="210" y1="73" x2="470" y2="150" stroke="var(--signal)"/>
+        <line x1="210" y1="145" x2="470" y2="165" stroke="var(--signal)"/>
+        <line x1="210" y1="217" x2="470" y2="180" stroke="var(--signal)"/>
+        <!-- ルーター → AIの文脈 -->
+        <line x1="690" y1="165" x2="828" y2="165" stroke="var(--muted)" stroke-width="1.5"/>
+        <polygon points="826,159 838,165 826,171" fill="var(--muted)"/>
+        <rect class="dbox" x="840" y="90" width="280" height="150"/>
+        <text class="didx" x="864" y="118">CONTEXT</text>
+        <text class="dst" x="864" y="142" data-i18n="s5-dia-context-title">AIの文脈</text>
+        <rect class="dsel2" x="864" y="158" width="232" height="22"/>
+        <rect class="dsel2" x="864" y="186" width="232" height="22"/>
+        <rect class="dsel2" x="864" y="214" width="180" height="22"/>
+        <text class="dmut" x="980" y="270" text-anchor="middle" data-i18n="s5-dia-context-note">該当文書だけ — 無駄な文脈を積まない</text>
+        <!-- 該当外は読ませない -->
+        <line x1="210" y1="265" x2="316" y2="258" stroke="var(--alert)" stroke-dasharray="4 4" opacity=".55"/>
+        <text class="dx" x="330" y="262" text-anchor="middle">×</text>
+        <text class="dmut" x="330" y="288" text-anchor="middle" style="fill:var(--alert)" data-i18n="s5-dia-exclude-note">該当外は読ませない — 文脈汚染を防ぐ</text>
+      </svg>
+    </div>
     <div class="grid g2 reveal">
       <div class="card">
         <span class="card__tag">Routing</span>
-        <h3>読む文書を機械的に決める</h3>
+        <h3 data-i18n="s5-card-routing-h3">読む文書を機械的に決める</h3>
         <ul>
-          <li>ルート規約が「必ず読む文書」を宣言</li>
-          <li>作業域ごとのルーターが該当文書だけをReadさせる</li>
-          <li>作業域外の文書は読ませない — 文脈汚染とトークン浪費を同時に防ぐ</li>
+          <li data-i18n="s5-card-routing-li1">ルート規約が「必ず読む文書」を宣言</li>
+          <li data-i18n="s5-card-routing-li2">作業域ごとのルーターが該当文書だけをReadさせる</li>
+          <li data-i18n="s5-card-routing-li3">作業域外の文書は読ませない — 文脈汚染とトークン浪費を同時に防ぐ</li>
         </ul>
       </div>
       <div class="card">
         <span class="card__tag">Skills</span>
-        <h3>定型作業をコマンド化</h3>
+        <h3 data-i18n="s5-card-skills-h3">定型作業をコマンド化</h3>
         <ul>
-          <li>マルチエージェント修正チームの自動実行</li>
-          <li>別ベンダーのモデルを併用するクロスレビュー</li>
-          <li>作る前に質問を重ね要件と設計を固める設計対話</li>
-          <li>曖昧な依頼を役割・文脈付きの指示書へ変換</li>
+          <li data-i18n="s5-card-skills-li1">マルチエージェント修正チームの自動実行</li>
+          <li data-i18n="s5-card-skills-li2">別ベンダーのモデルを併用するクロスレビュー</li>
+          <li data-i18n="s5-card-skills-li3">作る前に質問を重ね要件と設計を固める設計対話</li>
+          <li data-i18n="s5-card-skills-li4">曖昧な依頼を役割・文脈付きの指示書へ変換</li>
         </ul>
       </div>
     </div>
@@ -259,60 +381,89 @@ app-web/AGENTS.mdに未コミット変更あり。mainへ切替方法は?
 </section>
 
 <!-- 06 eval -->
-<section class="panel" id="s6" data-nav="回帰検証">
+<section class="panel" id="s6" data-nav="回帰検証" data-i18n-nav="s6-nav">
   <div class="panel__inner">
     <header class="head reveal">
-      <p class="eyebrow"><span class="idx">06</span> 構築 / Evaluation</p>
-      <h2>eval36ケース — ハーネス自体を回帰検証する</h2>
-      <p class="lede">モデルが更新されると、これまで効いていたルールが急に効かなくなることがある。ハーネスがまだ有効かどうかを、自動で確かめる検査を持たせた。</p>
+      <p class="eyebrow" data-i18n="s6-eyebrow"><span class="idx">06</span> 構築 / Evaluation</p>
+      <h2 data-i18n="s6-h2">eval36ケース — ハーネス自体を回帰検証する</h2>
+      <p class="lede" data-i18n="s6-lede">モデルが更新されると、これまで効いていたルールが急に効かなくなることがある。ハーネスがまだ有効かどうかを、自動で確かめる検査を持たせた。</p>
     </header>
     <div class="evals reveal">
-      <div class="eval"><b>style-any-block</b><span>対象内の<code class="inline-code">any</code>使用を検出して遮断</span></div>
-      <div class="eval"><b>style-any-outside-skip</b><span>対象外ファイルはスキップ</span></div>
-      <div class="eval"><b>style-unknown-block</b><span>一般的な<code class="inline-code">unknown</code>型を遮断</span></div>
-      <div class="eval"><b>style-semicolon-block</b><span>セミコロンを遮断</span></div>
-      <div class="eval"><b>style-dq-ts-block</b><span><code class="inline-code">.ts</code>のダブルクォートを遮断</span></div>
-      <div class="eval"><b>style-dq-tsx-import-block</b><span><code class="inline-code">.tsx</code>のimport文のみ遮断</span></div>
-      <div class="eval"><b>style-dq-tsx-jsx-allow</b><span>JSX属性のダブルクォートは許可</span></div>
-      <div class="eval"><b>style-barrel-block</b><span>バレルimportを遮断</span></div>
-      <div class="eval"><b>style-clean-pass</b><span>クリーンなコードは通す</span></div>
-      <div class="eval"><b>import-alias-block</b><span>階層をまたぐ相対importを遮断</span></div>
+      <div class="eval"><b>style-any-block</b><span data-i18n="s6-eval1">対象内の<code class="inline-code">any</code>使用を検出して遮断</span></div>
+      <div class="eval"><b>style-any-outside-skip</b><span data-i18n="s6-eval2">対象外ファイルはスキップ</span></div>
+      <div class="eval"><b>style-unknown-block</b><span data-i18n="s6-eval3">一般的な<code class="inline-code">unknown</code>型を遮断</span></div>
+      <div class="eval"><b>style-semicolon-block</b><span data-i18n="s6-eval4">セミコロンを遮断</span></div>
+      <div class="eval"><b>style-dq-ts-block</b><span data-i18n="s6-eval5"><code class="inline-code">.ts</code>のダブルクォートを遮断</span></div>
+      <div class="eval"><b>style-dq-tsx-import-block</b><span data-i18n="s6-eval6"><code class="inline-code">.tsx</code>のimport文のみ遮断</span></div>
+      <div class="eval"><b>style-dq-tsx-jsx-allow</b><span data-i18n="s6-eval7">JSX属性のダブルクォートは許可</span></div>
+      <div class="eval"><b>style-barrel-block</b><span data-i18n="s6-eval8">バレルimportを遮断</span></div>
+      <div class="eval"><b>style-clean-pass</b><span data-i18n="s6-eval9">クリーンなコードは通す</span></div>
+      <div class="eval"><b>import-alias-block</b><span data-i18n="s6-eval10">階層をまたぐ相対importを遮断</span></div>
     </div>
-    <p class="lede reveal" style="font-size:.85rem">「遮断すべきものを遮断するか」だけでなく「通すべきものを通すか」まで検査する。過剰に遮断すれば開発体験が壊れるため、許可側のケースも同数用意した。</p>
+    <p class="lede reveal" style="font-size:.85rem" data-i18n="s6-note">「遮断すべきものを遮断するか」だけでなく「通すべきものを通すか」まで検査する。過剰に遮断すれば開発体験が壊れるため、許可側のケースも同数用意した。</p>
   </div>
 </section>
 
 <!-- 07 instinct -->
-<section class="panel" id="s7" data-nav="自己学習">
+<section class="panel" id="s7" data-nav="自己学習" data-i18n-nav="s7-nav">
   <div class="panel__inner">
     <header class="head reveal">
-      <p class="eyebrow"><span class="idx">07</span> 構築 / Self-improving loop</p>
-      <h2>instinct — 指摘を覚えて、次は先回りする</h2>
-      <p class="lede">作業を見て覚え、繰り返しをルール化し、次の依頼で先回りする。同じ円を回すほど「指摘」は減り、「精度」は上がる。</p>
+      <p class="eyebrow" data-i18n="s7-eyebrow"><span class="idx">07</span> 構築 / Self-improving loop</p>
+      <h2 data-i18n="s7-h2">instinct — 指摘を覚えて、次は先回りする</h2>
+      <p class="lede" data-i18n="s7-lede">作業を見て覚え、繰り返しをルール化し、次の依頼で先回りする。同じ円を回すほど「指摘」は減り、「精度」は上がる。</p>
     </header>
-    <div class="loop reveal">
-      <div class="loop__node"><em>01 観察</em><h3>見る・覚える</h3><p>どのファイルをどう直したか、クセや好みを自動で記録</p></div>
-      <div class="loop__node"><em>02 抽出</em><h3>ルール化</h3><p>「いつも指摘される点」を自動でルールに変換</p></div>
-      <div class="loop__node"><em>03 適用</em><h3>先回り</h3><p>次の作業に反映し、同じ指摘を繰り返さない</p></div>
+<div class="dia-wrap reveal">
+      <svg class="dia dia--loop" viewBox="0 0 900 430" role="img" aria-label="instinctループ: 観察→抽出→適用を回すほど改善が累積する" data-i18n-aria="s7-dia-loop-aria">
+        <!-- 循環矢印(時計回り) -->
+        <path d="M 562 66 A 190 190 0 0 1 704 290" fill="none" stroke="var(--signal)" stroke-width="1.5"/>
+        <polygon points="696,282 706,296 710,280" fill="var(--signal)"/>
+        <path d="M 590 356 A 220 220 0 0 1 310 356" fill="none" stroke="var(--signal)" stroke-width="1.5"/>
+        <polygon points="320,350 306,358 322,364" fill="var(--signal)"/>
+        <path d="M 196 290 A 190 190 0 0 1 338 66" fill="none" stroke="var(--signal)" stroke-width="1.5"/>
+        <polygon points="330,74 344,62 328,60" fill="var(--signal)"/>
+        <!-- 中心 -->
+        <text class="dspin" x="450" y="190" text-anchor="middle">↻</text>
+        <text class="dst" x="450" y="222" text-anchor="middle" data-i18n="s7-dia-center-title">回すほど賢く</text>
+        <text class="dmut" x="450" y="246" text-anchor="middle" data-i18n="s7-dia-center-note">回を追うごとに改善が累積</text>
+        <!-- ノード3つ -->
+        <rect class="dbox" x="350" y="16" width="200" height="84"/>
+        <text class="didx" x="450" y="40" text-anchor="middle" data-i18n="s7-dia-node1-idx">01 観察</text>
+        <text class="dst" x="450" y="62" text-anchor="middle" data-i18n="s7-dia-node1-title">見る・覚える</text>
+        <text class="dmut" x="450" y="84" text-anchor="middle" data-i18n="s7-dia-node1-note">クセや好みを自動で記録</text>
+        <rect class="dbox" x="600" y="300" width="200" height="84"/>
+        <text class="didx" x="700" y="324" text-anchor="middle" data-i18n="s7-dia-node2-idx">02 抽出</text>
+        <text class="dst" x="700" y="346" text-anchor="middle" data-i18n="s7-dia-node2-title">ルール化</text>
+        <text class="dmut" x="700" y="368" text-anchor="middle" data-i18n="s7-dia-node2-note">いつもの指摘をルールへ変換</text>
+        <rect class="dbox" x="100" y="300" width="200" height="84"/>
+        <text class="didx" x="200" y="324" text-anchor="middle" data-i18n="s7-dia-node3-idx">03 適用</text>
+        <text class="dst" x="200" y="346" text-anchor="middle" data-i18n="s7-dia-node3-title">先回り</text>
+        <text class="dmut" x="200" y="368" text-anchor="middle" data-i18n="s7-dia-node3-note">同じ指摘を繰り返さない</text>
+      </svg>
     </div>
-    <p class="loopback loopback--spin reveal">回すほど賢く — 回を追うごとに改善が累積する</p>
     <div class="grid g2 reveal">
       <div class="card">
-        <h3>同じ指摘の回数(イメージ)</h3>
-        <div class="decay">
-          <div class="decay__bar"><span class="decay__n">5</span><div class="decay__fill" style="height:100%"></div><span class="decay__lab">1回目</span></div>
-          <div class="decay__bar"><span class="decay__n">2</span><div class="decay__fill" style="height:40%"></div><span class="decay__lab">2回目</span></div>
-          <div class="decay__bar"><span class="decay__n" style="color:var(--pass)">0</span><div class="decay__fill is-zero"></div><span class="decay__lab">3回目</span></div>
-        </div>
-        <p class="band__note">同じミスを繰り返さない</p>
+        <h3 data-i18n="s7-card1-h3">同じ指摘の回数(イメージ)</h3>
+        <svg class="dia dia--decay" viewBox="0 0 320 175" role="img" aria-label="同じ指摘の回数: 1回目5件、2回目2件、3回目0件" data-i18n-aria="s7-dia-decay-aria">
+          <line x1="10" y1="140.5" x2="310" y2="140.5" stroke="var(--rule)"/>
+          <text class="dnum" x="60" y="30" text-anchor="middle">5</text>
+          <rect x="30" y="40" width="60" height="100" fill="var(--signal)"/>
+          <text class="dm dlab" x="60" y="162" text-anchor="middle" data-i18n="s7-dia-decay-lab1">1回目</text>
+          <text class="dnum" x="160" y="90" text-anchor="middle">2</text>
+          <rect x="130" y="100" width="60" height="40" fill="var(--signal)"/>
+          <text class="dm dlab" x="160" y="162" text-anchor="middle" data-i18n="s7-dia-decay-lab2">2回目</text>
+          <text class="dnum" x="260" y="126" text-anchor="middle" style="fill:var(--pass)">0</text>
+          <rect x="230" y="136" width="60" height="4" fill="var(--pass)"/>
+          <text class="dm dlab" x="260" y="162" text-anchor="middle" data-i18n="s7-dia-decay-lab3">3回目</text>
+        </svg>
+        <p class="band__note" data-i18n="s7-card1-note">同じミスを繰り返さない</p>
       </div>
       <div class="card">
         <span class="card__tag">Effect</span>
-        <h3>ループで改善されること</h3>
+        <h3 data-i18n="s7-card2-h3">ループで改善されること</h3>
         <ul>
-          <li><b>繰返し指摘 ↓</b> — 同じミスが消える</li>
-          <li><b>レビュー精度 ↑</b> — 先回りで予防する</li>
-          <li>回を追うごとに改善が累積し、レビューに使う人の時間が減る</li>
+          <li data-i18n="s7-card2-li1"><b>繰返し指摘 ↓</b> — 同じミスが消える</li>
+          <li data-i18n="s7-card2-li2"><b>レビュー精度 ↑</b> — 先回りで予防する</li>
+          <li data-i18n="s7-card2-li3">回を追うごとに改善が累積し、レビューに使う人の時間が減る</li>
         </ul>
       </div>
     </div>
@@ -320,12 +471,12 @@ app-web/AGENTS.mdに未コミット変更あり。mainへ切替方法は?
 </section>
 
 <!-- 08 運用画面 -->
-<section class="panel" id="s8" data-nav="運用画面">
+<section class="panel" id="s8" data-nav="運用画面" data-i18n-nav="s8-nav">
   <div class="panel__inner">
     <header class="head reveal">
-      <p class="eyebrow"><span class="idx">08</span> 構築 / Operations</p>
-      <h2>複数セッションとワーカーを、一画面で監視する</h2>
-      <p class="lede">並列で走るワーカーは、見えていなければ止まっていても気づけない。経過時間・トークン・コストを常時可視化し、停滞をすぐ把握できるようにした。</p>
+      <p class="eyebrow" data-i18n="s8-eyebrow"><span class="idx">08</span> 構築 / Operations</p>
+      <h2 data-i18n="s8-h2">複数セッションとワーカーを、一画面で監視する</h2>
+      <p class="lede" data-i18n="s8-lede">並列で走るワーカーは、見えていなければ止まっていても気づけない。経過時間・トークン・コストを常時可視化し、停滞をすぐ把握できるようにした。</p>
     </header>
     <div class="cmux reveal">
       <div class="cmux__rail">
@@ -356,39 +507,82 @@ app-web/AGENTS.mdに未コミット変更あり。mainへ切替方法は?
 </section>
 
 <!-- 09 配布 -->
-<section class="panel" id="s9" data-nav="配布">
+<section class="panel" id="s9" data-nav="配布" data-i18n-nav="s9-nav">
   <div class="panel__inner">
     <header class="head reveal">
-      <p class="eyebrow"><span class="idx">09</span> 普及 / Distribution</p>
-      <h2>自分の環境を、そのまま配れる形にする</h2>
-      <p class="lede">個人の設定で終わらせず、インストール一発で同じ開発環境が再現されるパッケージにした。現在は4名が運用している。</p>
+      <p class="eyebrow" data-i18n="s9-eyebrow"><span class="idx">09</span> 普及 / Distribution</p>
+      <h2 data-i18n="s9-h2">自分の環境を、そのまま配れる形にする</h2>
+      <p class="lede" data-i18n="s9-lede">個人の設定で終わらせず、インストール一発で同じ開発環境が再現されるパッケージにした。現在は4名が運用している。</p>
     </header>
+    <div class="dia-wrap reveal">
+      <svg class="dia" viewBox="0 0 1160 320" role="img" aria-label="配布フロー: 構築者の環境をパッケージ化し、チーム4名に同じ環境を再現する" data-i18n-aria="s9-dia-aria">
+        <!-- 構築者の環境 -->
+        <rect class="dbox" x="20" y="40" width="300" height="250"/>
+        <text class="didx" x="44" y="72">SOURCE</text>
+        <text class="dst" x="44" y="98" data-i18n="s9-dia-source-title">構築者の環境</text>
+        <text class="dm db" x="44" y="126" style="fill:var(--signal)">~/.claude/</text>
+        <line x1="50" y1="138" x2="50" y2="242" stroke="var(--rule-strong)"/>
+        <line x1="50" y1="160" x2="62" y2="160" stroke="var(--rule-strong)"/>
+        <text class="dm db" x="70" y="165" data-i18n="s9-dia-hooks">hooks(25個)</text>
+        <line x1="50" y1="188" x2="62" y2="188" stroke="var(--rule-strong)"/>
+        <text class="dm db" x="70" y="193" data-i18n="s9-dia-skills">skills・コマンド</text>
+        <line x1="50" y1="216" x2="62" y2="216" stroke="var(--rule-strong)"/>
+        <text class="dm db" x="70" y="221">agents</text>
+        <line x1="50" y1="242" x2="62" y2="242" stroke="var(--rule-strong)"/>
+        <text class="dm db" x="70" y="247">statusline</text>
+        <!-- パッケージ化 -->
+        <text class="dmut" x="374" y="152" text-anchor="middle" data-i18n="s9-dia-package-label">パッケージ化</text>
+        <line x1="320" y1="165" x2="418" y2="165" stroke="var(--muted)" stroke-width="1.5"/>
+        <polygon points="416,159 428,165 416,171" fill="var(--muted)"/>
+        <!-- 配布キット -->
+        <rect class="dbox" x="430" y="90" width="280" height="160"/>
+        <text class="didx" x="454" y="122">KIT</text>
+        <text class="dst" x="454" y="148" data-i18n="s9-dia-kit-title">インストール式配布</text>
+        <rect x="454" y="162" width="200" height="30" fill="#282A36" stroke="#44475A"/>
+        <text class="dm" x="466" y="182" font-size="12.5" style="fill:#50FA7B">$ bash install.sh</text>
+        <text class="dmut" x="454" y="216" data-i18n="s9-dia-kit-note1">既存設定は.bakへ退避</text>
+        <text class="dmut" x="454" y="234" data-i18n="s9-dia-kit-note2">依存も自動確認</text>
+        <!-- チームへ展開 -->
+        <line x1="710" y1="165" x2="798" y2="165" stroke="var(--muted)" stroke-width="1.5"/>
+        <polygon points="796,159 808,165 796,171" fill="var(--muted)"/>
+        <rect x="820" y="60" width="320" height="210" fill="none" stroke="var(--rule-strong)" stroke-dasharray="5 5"/>
+        <text class="didx" x="844" y="92">TEAM</text>
+        <g class="dperson">
+          <circle cx="880" cy="140" r="13"/><path d="M 858 186 A 22 22 0 0 1 902 186"/>
+          <circle cx="950" cy="140" r="13"/><path d="M 928 186 A 22 22 0 0 1 972 186"/>
+          <circle cx="1020" cy="140" r="13"/><path d="M 998 186 A 22 22 0 0 1 1042 186"/>
+          <circle cx="1090" cy="140" r="13"/><path d="M 1068 186 A 22 22 0 0 1 1112 186"/>
+        </g>
+        <text class="dst" x="980" y="222" text-anchor="middle" data-i18n="s9-dia-team-title">4名が運用中</text>
+        <text class="dmut" x="980" y="246" text-anchor="middle" data-i18n="s9-dia-team-note">同じ環境が一発で再現される</text>
+      </svg>
+    </div>
     <div class="grid g3 reveal">
       <div class="card">
         <span class="card__tag">Kit</span>
-        <h3>インストール式配布</h3>
+        <h3 data-i18n="s9-card-kit-h3">インストール式配布</h3>
         <ul>
-          <li><code>bash install.sh</code>でホームに自動インストール</li>
-          <li>フック・スキルコマンド・エージェント・ステータスラインを一括配置</li>
-          <li>既存設定は<code>.bak</code>に退避、依存も自動確認</li>
+          <li data-i18n="s9-card-kit-li1"><code>bash install.sh</code>でホームに自動インストール</li>
+          <li data-i18n="s9-card-kit-li2">フック・スキルコマンド・エージェント・ステータスラインを一括配置</li>
+          <li data-i18n="s9-card-kit-li3">既存設定は<code>.bak</code>に退避、依存も自動確認</li>
         </ul>
       </div>
       <div class="card">
         <span class="card__tag">Docs</span>
-        <h3>付属の説明書</h3>
+        <h3 data-i18n="s9-card-docs-h3">付属の説明書</h3>
         <ul>
-          <li>全12章・日韓英の単一HTML</li>
-          <li>設置 → チーム運用 → トークン最適化 → フック → FAQ</li>
-          <li>読む順に並べ、詰まる箇所を先回りして書いた</li>
+          <li data-i18n="s9-card-docs-li1">全12章・日韓英の単一HTML</li>
+          <li data-i18n="s9-card-docs-li2">設置 → チーム運用 → トークン最適化 → フック → FAQ</li>
+          <li data-i18n="s9-card-docs-li3">読む順に並べ、詰まる箇所を先回りして書いた</li>
         </ul>
       </div>
       <div class="card">
         <span class="card__tag">Standard</span>
-        <h3>共通ガイドで標準化</h3>
+        <h3 data-i18n="s9-card-std-h3">共通ガイドで標準化</h3>
         <ul>
-          <li>規約文書を全員の参照先に統一</li>
-          <li>暗黙のローカルルールを明文化</li>
-          <li>誰でも同じ前提で回せる土台にする</li>
+          <li data-i18n="s9-card-std-li1">規約文書を全員の参照先に統一</li>
+          <li data-i18n="s9-card-std-li2">暗黙のローカルルールを明文化</li>
+          <li data-i18n="s9-card-std-li3">誰でも同じ前提で回せる土台にする</li>
         </ul>
       </div>
     </div>
@@ -396,133 +590,133 @@ app-web/AGENTS.mdに未コミット変更あり。mainへ切替方法は?
 </section>
 
 <!-- 10 定着 -->
-<section class="panel" id="s10" data-nav="定着支援">
+<section class="panel" id="s10" data-nav="定着支援" data-i18n-nav="s10-nav">
   <div class="panel__inner">
     <header class="head reveal">
-      <p class="eyebrow"><span class="idx">10</span> 普及 / Adoption</p>
-      <h2>配っただけでは、使われない</h2>
-      <p class="lede">ツールと文書を配ってもなお、使われない状態が続いた。使えるようになるまでの伴走を、配布と同じだけの比重で設計した。</p>
+      <p class="eyebrow" data-i18n="s10-eyebrow"><span class="idx">10</span> 普及 / Adoption</p>
+      <h2 data-i18n="s10-h2">配っただけでは、使われない</h2>
+      <p class="lede" data-i18n="s10-lede">ツールと文書を配ってもなお、使われない状態が続いた。使えるようになるまでの伴走を、配布と同じだけの比重で設計した。</p>
     </header>
     <div class="grid g3 reveal">
-      <div class="card"><span class="card__tag">1 : 1</span><h3>マンツーマン支援</h3><p>隣で実際の依頼を一緒に回し、使い方を直接伝える。詰まる箇所は人によって違う。</p></div>
-      <div class="card"><span class="card__tag">Weekly</span><h3>定例での共有</h3><p>週1回、活用事例と新機能をデモ。打ち合わせでも都度共有する。</p></div>
-      <div class="card"><span class="card__tag">Workshop</span><h3>使い方勉強会</h3><p>ハンズオンを通じて、手を動かして身につけてもらう。</p></div>
+      <div class="card"><span class="card__tag">1 : 1</span><h3 data-i18n="s10-card1-h3">マンツーマン支援</h3><p data-i18n="s10-card1-p">隣で実際の依頼を一緒に回し、使い方を直接伝える。詰まる箇所は人によって違う。</p></div>
+      <div class="card"><span class="card__tag">Weekly</span><h3 data-i18n="s10-card2-h3">定例での共有</h3><p data-i18n="s10-card2-p">週1回、活用事例と新機能をデモ。打ち合わせでも都度共有する。</p></div>
+      <div class="card"><span class="card__tag">Workshop</span><h3 data-i18n="s10-card3-h3">使い方勉強会</h3><p data-i18n="s10-card3-p">ハンズオンを通じて、手を動かして身につけてもらう。</p></div>
     </div>
   </div>
 </section>
 
 <!-- 11 効果① -->
-<section class="panel" id="s11" data-nav="運用実績">
+<section class="panel" id="s11" data-nav="運用実績" data-i18n-nav="s11-nav">
   <div class="panel__inner">
     <header class="head reveal">
-      <p class="eyebrow"><span class="idx">11</span> 効果 / Track record</p>
-      <h2>マルチエージェント運用実績</h2>
-      <p class="lede">2か月分の累計値。ワーカーの結果をそのまま承認できた割合と、人が介入せずに完了した割合を計測した。</p>
+      <p class="eyebrow" data-i18n="s11-eyebrow"><span class="idx">11</span> 効果 / Track record</p>
+      <h2 data-i18n="s11-h2">マルチエージェント運用実績</h2>
+      <p class="lede" data-i18n="s11-lede">2か月分の累計値。ワーカーの結果をそのまま承認できた割合と、人が介入せずに完了した割合を計測した。</p>
     </header>
     <div class="chips reveal">
-      <div class="chip"><b data-count="105" data-suffix="件">105件</b><small>AIチーム自動実行(修正94 / レビュー11)</small></div>
-      <div class="chip"><b data-count="90.7" data-suffix="%">90.7%</b><small>一次採択率 — 無修正で承認</small></div>
-      <div class="chip"><b data-count="87.6" data-suffix="%">87.6%</b><small>無介入完了率 — 人の介入なしで完了</small></div>
-      <div class="chip"><b data-count="1044" data-suffix="個">1,044個</b><small>累計変更ファイル</small></div>
+      <div class="chip"><b data-count="105" data-suffix="件">105件</b><small data-i18n="s11-chip1">AIチーム自動実行(修正94 / レビュー11)</small></div>
+      <div class="chip"><b data-count="90.7" data-suffix="%">90.7%</b><small data-i18n="s11-chip2">一次採択率 — 無修正で承認</small></div>
+      <div class="chip"><b data-count="87.6" data-suffix="%">87.6%</b><small data-i18n="s11-chip3">無介入完了率 — 人の介入なしで完了</small></div>
+      <div class="chip"><b data-count="1044" data-suffix="個">1,044個</b><small data-i18n="s11-chip4">累計変更ファイル</small></div>
     </div>
-    <p class="lede reveal" style="font-size:.85rem">一次採択率が9割を超えたのは、フックが機械的に弾く層を先に挟んでいるから。人のレビューは設計判断に集中でき、スタイルや規約違反はレビューに上がる前に消えている。</p>
+    <p class="lede reveal" style="font-size:.85rem" data-i18n="s11-note">一次採択率が9割を超えたのは、フックが機械的に弾く層を先に挟んでいるから。人のレビューは設計判断に集中でき、スタイルや規約違反はレビューに上がる前に消えている。</p>
   </div>
 </section>
 
 <!-- 12 効果② -->
-<section class="panel" id="s12" data-nav="生産性">
+<section class="panel" id="s12" data-nav="生産性" data-i18n-nav="s12-nav">
   <div class="panel__inner">
     <header class="head reveal">
-      <p class="eyebrow"><span class="idx">12</span> 効果 / Productivity</p>
-      <h2>ハーネス導入 → 生産性の加速</h2>
-      <p class="lede">導入は月初め。特定の1人だけでなく、チーム全体の数値が構造的に上がった。</p>
+      <p class="eyebrow" data-i18n="s12-eyebrow"><span class="idx">12</span> 効果 / Productivity</p>
+      <h2 data-i18n="s12-h2">ハーネス導入 → 生産性の加速</h2>
+      <p class="lede" data-i18n="s12-lede">導入は月初め。特定の1人だけでなく、チーム全体の数値が構造的に上がった。</p>
     </header>
     <div class="bars reveal">
       <div class="bargroup">
-        <h3>チーム月間コミット</h3>
+        <h3 data-i18n="s12-bar1-h3">チーム月間コミット</h3>
         <div class="bar">
-          <div class="bar__meta"><span>導入前</span><b>60</b></div>
+          <div class="bar__meta"><span data-i18n="s12-bar1-before">導入前</span><b>60</b></div>
           <div class="bar__track"><div class="bar__fill" data-w="36"></div></div>
         </div>
         <div class="bar">
-          <div class="bar__meta"><span>導入後</span><b>169</b></div>
+          <div class="bar__meta"><span data-i18n="s12-bar1-after">導入後</span><b>169</b></div>
           <div class="bar__track"><div class="bar__fill is-after" data-w="100"></div></div>
         </div>
-        <p class="multiple">2.8倍</p>
+        <p class="multiple" data-i18n="s12-bar1-multiple">2.8倍</p>
       </div>
       <div class="bargroup">
-        <h3>コード追加行数</h3>
+        <h3 data-i18n="s12-bar2-h3">コード追加行数</h3>
         <div class="bar">
-          <div class="bar__meta"><span>導入直前</span><b>15,811</b></div>
+          <div class="bar__meta"><span data-i18n="s12-bar2-before">導入直前</span><b>15,811</b></div>
           <div class="bar__track"><div class="bar__fill" data-w="25"></div></div>
         </div>
         <div class="bar">
-          <div class="bar__meta"><span>導入直後</span><b>63,307</b></div>
+          <div class="bar__meta"><span data-i18n="s12-bar2-after">導入直後</span><b>63,307</b></div>
           <div class="bar__track"><div class="bar__fill is-after" data-w="100"></div></div>
         </div>
-        <p class="multiple">約4倍</p>
+        <p class="multiple" data-i18n="s12-bar2-multiple">約4倍</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- 13 課題 -->
-<section class="panel" id="s13" data-nav="課題">
+<section class="panel" id="s13" data-nav="課題" data-i18n-nav="s13-nav">
   <div class="panel__inner">
     <header class="head reveal">
-      <p class="eyebrow"><span class="idx">13</span> 課題 / Open problems</p>
-      <h2>数字の裏にある、2つの未解決</h2>
-      <p class="lede">導入の効果は出た。ただし「誰にでも効いた」わけではないし、「量が増えた=価値が増えた」とも言い切れない。</p>
+      <p class="eyebrow" data-i18n="s13-eyebrow"><span class="idx">13</span> 課題 / Open problems</p>
+      <h2 data-i18n="s13-h2">数字の裏にある、2つの未解決</h2>
+      <p class="lede" data-i18n="s13-lede">導入の効果は出た。ただし「誰にでも効いた」わけではないし、「量が増えた=価値が増えた」とも言い切れない。</p>
     </header>
     <div class="grid g2 reveal">
       <div class="card issue">
         <span class="card__tag">Issue 01</span>
-        <h3>効果が一人に集中している</h3>
+        <h3 data-i18n="s13-issue1-h3">効果が一人に集中している</h3>
         <ul>
-          <li>チーム全体の増加分のうち、約85%が構築者本人に由来する</li>
-          <li>要因は「要件の言語化」の差と見ている。ハーネスは要件を切り出せる人の生産性を強く押し上げる</li>
-          <li>確たる原因はなお調査中。オンボーディング文書は配布済みで、単なる不慣れでは説明がつかない</li>
+          <li data-i18n="s13-issue1-li1">チーム全体の増加分のうち、約85%が構築者本人に由来する</li>
+          <li data-i18n="s13-issue1-li2">要因は「要件の言語化」の差と見ている。ハーネスは要件を切り出せる人の生産性を強く押し上げる</li>
+          <li data-i18n="s13-issue1-li3">確たる原因はなお調査中。オンボーディング文書は配布済みで、単なる不慣れでは説明がつかない</li>
         </ul>
       </div>
       <div class="card issue">
         <span class="card__tag">Issue 02</span>
-        <h3>量では成果を測れない</h3>
+        <h3 data-i18n="s13-issue2-h3">量では成果を測れない</h3>
         <ul>
-          <li>コミット数・行数は活動量であって価値ではない</li>
-          <li>大量生成はレビュー負債を増やすこともある</li>
-          <li>アウトプットが偏っている以上、費用対効果は現状読みにくい</li>
+          <li data-i18n="s13-issue2-li1">コミット数・行数は活動量であって価値ではない</li>
+          <li data-i18n="s13-issue2-li2">大量生成はレビュー負債を増やすこともある</li>
+          <li data-i18n="s13-issue2-li3">アウトプットが偏っている以上、費用対効果は現状読みにくい</li>
         </ul>
       </div>
     </div>
-    <p class="lede reveal" style="font-size:.85rem"><b>次の一手</b> — 各自が要件 → 生成 → 検証を、小さなタスクからend-to-endで担当する。AIが補助しながら任せる範囲を段階的に広げ、個人依存を構造ごと解消していく。</p>
+    <p class="lede reveal" style="font-size:.85rem" data-i18n="s13-note"><b>次の一手</b> — 各自が要件 → 生成 → 検証を、小さなタスクからend-to-endで担当する。AIが補助しながら任せる範囲を段階的に広げ、個人依存を構造ごと解消していく。</p>
   </div>
 </section>
 
 <!-- 14 今後 -->
-<section class="panel" id="s14" data-nav="今後">
+<section class="panel" id="s14" data-nav="今後" data-i18n-nav="s14-nav">
   <div class="panel__inner">
     <header class="head reveal">
-      <p class="eyebrow"><span class="idx">14</span> 今後 / Next</p>
-      <h2>「生成」から「検証」へ</h2>
-      <p class="lede">エージェントが大量のコードを自律的に生み出すようになり、人のレビューがボトルネックになった。関心の中心は、生成から検証へ移りつつある。</p>
+      <p class="eyebrow" data-i18n="s14-eyebrow"><span class="idx">14</span> 今後 / Next</p>
+      <h2 data-i18n="s14-h2">「生成」から「検証」へ</h2>
+      <p class="lede" data-i18n="s14-lede">エージェントが大量のコードを自律的に生み出すようになり、人のレビューがボトルネックになった。関心の中心は、生成から検証へ移りつつある。</p>
     </header>
     <div class="grid g2 reveal">
       <div class="card next">
-        <span class="card__tag">着手済み</span>
-        <h3>危険なコードを自動で見つける</h3>
+        <span class="card__tag" data-i18n="s14-card1-tag">着手済み</span>
+        <h3 data-i18n="s14-card1-h3">危険なコードを自動で見つける</h3>
         <ul>
-          <li>認証情報の漏れやセキュリティの穴をAIが自動検出</li>
-          <li>よく出る指摘を学習させ、レビュー前に自動で防ぐ</li>
-          <li>保存した瞬間に誤りや重複を検査し、その場で止める</li>
+          <li data-i18n="s14-card1-li1">認証情報の漏れやセキュリティの穴をAIが自動検出</li>
+          <li data-i18n="s14-card1-li2">よく出る指摘を学習させ、レビュー前に自動で防ぐ</li>
+          <li data-i18n="s14-card1-li3">保存した瞬間に誤りや重複を検査し、その場で止める</li>
         </ul>
       </div>
       <div class="card next">
-        <span class="card__tag">次のアクション</span>
-        <h3>CI/CD + 自動テスト</h3>
+        <span class="card__tag" data-i18n="s14-card2-tag">次のアクション</span>
+        <h3 data-i18n="s14-card2-h3">CI/CD + 自動テスト</h3>
         <ul>
-          <li>コードを共有すると検査とテストが自動で走る</li>
-          <li>「前まで動いていた機能が壊れていないか」を機械が毎回チェック</li>
-          <li>検証を人の集中力に依存させない</li>
+          <li data-i18n="s14-card2-li1">コードを共有すると検査とテストが自動で走る</li>
+          <li data-i18n="s14-card2-li2">「前まで動いていた機能が壊れていないか」を機械が毎回チェック</li>
+          <li data-i18n="s14-card2-li3">検証を人の集中力に依存させない</li>
         </ul>
       </div>
     </div>
@@ -530,43 +724,44 @@ app-web/AGENTS.mdに未コミット変更あり。mainへ切替方法は?
 </section>
 
 <!-- 15 まとめ -->
-<section class="panel" id="s15" data-nav="まとめ">
+<section class="panel" id="s15" data-nav="まとめ" data-i18n-nav="s15-nav">
   <div class="panel__inner">
     <header class="head reveal">
-      <p class="eyebrow"><span class="idx">15</span> Summary</p>
-      <h2>構築 → 配布 → 底上げ → 課題 → これから</h2>
+      <p class="eyebrow" data-i18n="s15-eyebrow"><span class="idx">15</span> Summary</p>
+      <h2 data-i18n="s15-h2">構築 → 配布 → 底上げ → 課題 → これから</h2>
     </header>
     <div class="summary reveal">
       <div class="summary__col">
-        <span class="card__tag">やったこと</span>
-        <p style="font-size:.86rem;color:var(--ink-2)">マルチエージェント+AIオーケストレーションのハーネスを構築。インストール式で配布し、1:1と週次共有で定着させた(4名が活用)。</p>
-        <p class="arrowline"><b>2.8x</b> commits &nbsp; <b>~4x</b> lines &nbsp; <b>87.6%</b> 無介入</p>
+        <span class="card__tag" data-i18n="s15-col1-tag">やったこと</span>
+        <p style="font-size:.86rem;color:var(--ink-2)" data-i18n="s15-col1-p">マルチエージェント+AIオーケストレーションのハーネスを構築。インストール式で配布し、1:1と週次共有で定着させた(4名が活用)。</p>
+        <p class="arrowline" data-i18n="s15-col1-arrowline"><b>2.8x</b> commits &nbsp; <b>~4x</b> lines &nbsp; <b>87.6%</b> 無介入</p>
       </div>
       <div class="summary__col">
-        <span class="card__tag">見えた課題</span>
-        <p style="font-size:.86rem;color:var(--ink-2)">効果が一人に集中し、量では成果を測れない。原因は要件の言語化の差と見ているが、調査は続いている。</p>
+        <span class="card__tag" data-i18n="s15-col2-tag">見えた課題</span>
+        <p style="font-size:.86rem;color:var(--ink-2)" data-i18n="s15-col2-p">効果が一人に集中し、量では成果を測れない。原因は要件の言語化の差と見ているが、調査は続いている。</p>
       </div>
       <div class="summary__col">
-        <span class="card__tag">これから</span>
-        <p style="font-size:.86rem;color:var(--ink-2)">各自が要件→生成→検証をend-to-endで回す自立へ。検証側はCI/CDと自動テストで土台を固める。</p>
+        <span class="card__tag" data-i18n="s15-col3-tag">これから</span>
+        <p style="font-size:.86rem;color:var(--ink-2)" data-i18n="s15-col3-p">各自が要件→生成→検証をend-to-endで回す自立へ。検証側はCI/CDと自動テストで土台を固める。</p>
       </div>
     </div>
-    <p class="lede reveal">コードはAIが書く。要件は人が掴む。 — その境界を、環境の設計で支える。</p>
+    <p class="lede reveal" data-i18n="s15-lede">コードはAIが書く。要件は人が掴む。 — その境界を、環境の設計で支える。</p>
   </div>
 </section>
 
 <!-- 16 クローズ -->
-<section class="panel close" id="s16" data-nav="End">
+<section class="panel close" id="s16" data-nav="End" data-i18n-nav="s16-nav">
   <div class="panel__inner close__inner">
-    <p class="eyebrow reveal">End</p>
-    <h1 class="reveal" style="font-size:clamp(1.8rem,4.4vw,3.2rem)">同じ依頼は、<br><span class="hl">いつも同じ結果</span>へ。</h1>
-    <p class="lede reveal">出力の揺らぎを、プロンプトの運任せにしない。再現性は環境の設計で決まる。</p>
+    <p class="eyebrow reveal" data-i18n="s16-eyebrow">End</p>
+    <h1 class="reveal" style="font-size:clamp(1.8rem,4.4vw,3.2rem)" data-i18n="s16-h1">同じ依頼は、<br><span class="hl">いつも同じ結果</span>へ。</h1>
+    <p class="lede reveal" data-i18n="s16-lede">出力の揺らぎを、プロンプトの運任せにしない。再現性は環境の設計で決まる。</p>
     <p class="sign reveal"><span>Harness Engineering Portfolio</span><span>朴 — 2026</span></p>
   </div>
 </section>
 
 </main>
 
+<script src="i18n.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
