@@ -13,6 +13,10 @@
     if (saved === 'light' || saved === 'dark') document.documentElement.setAttribute('data-theme', saved)
   } catch (e) { /* localStorage不可の環境ではシステム設定に従う */ }
 </script>
+<!-- アクセス解析(GoatCounter)。Cookie を使わず、IP と User-Agent のハッシュで
+     8時間セッションを判定する。localhost からのアクセスは count.js 側で除外される -->
+<script data-goatcounter="https://tottannim-harness.goatcounter.com/count"
+        async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
 
